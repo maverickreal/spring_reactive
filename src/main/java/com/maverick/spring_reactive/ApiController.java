@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@RestController @RequestMapping("api")
+@RestController
+@RequestMapping("api")
 public class ApiController {
     @Autowired
     EmployeeRepo employeeRepo;
@@ -20,8 +21,7 @@ public class ApiController {
     }
 
     @PostMapping
-    public Mono addEmployee(@RequestBody Mono<Employee> employee){
-        employee.flatMap(employeeRepo::save);
-        return Mono.empty();
+    public Mono<Void> addEmployee(@RequestBody Mono<Employee> employee) {
+        return employee.flatMap(employeeRepo::save).then();
     }
 }

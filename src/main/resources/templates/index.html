@@ -1,9 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title>Working with Data Reactively</title>
 </head>
-
 <body>
     <h2>Employees</h2>
     <ul>
@@ -13,9 +11,8 @@
     </ul>
     <form th:action="@{/}" th:object="${employee}" method="post">
         <input type="text" th:field="*{name}" />
-        <input type="text" th:field="*{role}" />
+        <input type="text" th:field="*{dept}" />
         <input type="submit" />
     </form>
 </body>
-
 </html>
